@@ -1,3 +1,11 @@
+<p align="center">
+  <img src="./p666.png" width="600" >
+  <h1 align="center"><code>p666</code></h1>
+</p>
+<br/>
+<br/>
+<br/>
+
 # puppeteer-666 (`p666`)
 
 ```sh
