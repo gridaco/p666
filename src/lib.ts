@@ -28,7 +28,23 @@ export async function page(
       await page.goto(url, options);
     } else if (html) {
       // Load the page from an HTML document
-      await page.setContent(html, options);
+      const cssReset = `
+    <style>
+      /* Reset all margins, paddings, and box-sizing */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  `;
+      await page.setContent(cssReset + html, options);
     }
     return page;
   } catch (error) {

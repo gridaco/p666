@@ -5,17 +5,19 @@ import { page } from "./lib";
 export async function generatePDF(req: Request, res: Response) {
   const { url, html, options = {} } = req.body;
 
-  if (!url) {
-    return res.status(400).json({ error: "URL is required" });
+  if (!url && !html) {
+    return res.status(400).json({ error: "URL or HTML is required" });
   }
 
   try {
     const browser = await puppeteer.launch();
     const p = await page(browser, { url, html }, { waitUntil: "networkidle0" });
 
+    console.log("Generating PDF...", options);
+
     const pdf = await p.pdf({
-      format: "A4",
       printBackground: true,
+      margin: { top: 0, right: 0, bottom: 0, left: 0 },
       ...options,
     });
 
@@ -31,8 +33,8 @@ export async function generatePDF(req: Request, res: Response) {
 export async function generateScreenshot(req: Request, res: Response) {
   const { url, html, options = {} } = req.body;
 
-  if (!url) {
-    return res.status(400).json({ error: "URL is required" });
+  if (!url && !html) {
+    return res.status(400).json({ error: "URL or HTML is required" });
   }
 
   try {
