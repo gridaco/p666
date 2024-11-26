@@ -1,11 +1,11 @@
 {
   "name": "p666",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "license": "MIT",
   "homepage": "https://github.com/gridaco/puppeteer-666",
   "bin": {
-    "p666": "dist/server.js"
+    "p666": "dist/cli.js"
   },
   "scripts": {
     "dev": "ts-node-dev --respawn src/server.ts",
